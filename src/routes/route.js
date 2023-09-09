@@ -1,9 +1,12 @@
 const express = require('express');
-const route = express.Router();
+const AuthRoute = require('./subRoute/authRoute');
+const BookRoute = require('./subRoute/bookRoute');
 
-route.get('/hello',(req,resp)=>{
-    return resp.send("blo");
-});
+
+const route = express.Router();
+route.use('/v2',BookRoute);
+route.use('/v1',AuthRoute);
+
 
 
 module.exports = route;
