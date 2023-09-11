@@ -22,18 +22,46 @@
                     <td>{{formatDate this.birthday}}</td>
                     <td>{{ternary this.gender "Nam" "Nữ"}}</td>
                     <td>
-                        <a class="btn btn-link fs-5" href="/author/edit/{{this._id}}" style="" >Sửa</a>
-                        <a class="btn btn-link fs-5" href="/author/edit/{{this._id}}" style="" >Xóa</a>
+                        <a class="btn btn-link fs-5" href="/author/edit/{{this._id}}" style="">Sửa</a>
+                        <a class="btn btn-link fs-5" onclick="confirmDelete('{{this._id}}','{{this.name}}')"
+                            style="">Xóa</a>
                     </td>
 
                 </tr>
                 {{else}}
-                <tr>
-                    <td colspan="6">Chưa </td>
+                <tr class="text-center">
+                    <td colspan="6">Hiện chưa có thông tin tác giả</td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
+    <form action="" method="get" id="delete-form"></form>
 
 </div>
+
+<script>
+    const confirmDelete = (id, name) => {
+        const confirmValue = confirm(`Bạn có chắc chắn muốn xóa thông tin tác giả "${name}"`);
+        if (confirmValue) {
+            console.log(id);
+            let url = location.protocol + '//' + location.host + '/author/delete/' + id;
+            const form = document.getElementById('delete-form');
+            form.action = url;
+            form.submit();
+        }
+    }
+</script>

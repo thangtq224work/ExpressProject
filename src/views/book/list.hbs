@@ -8,6 +8,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Tên sách</th>
                     <th scope="col">Ngày phát hành</th>
+                    <th scope="col">Giá bán</th>
                     <th scope="col">Tác giả</th>
                     <th scope="col">Số lượng</th>
                     <th scope="col">Hành động</th>
@@ -19,11 +20,13 @@
                     <th scope="row">{{sum @index 1}}</th>
                     <td>{{this.name}}</td>
                     <td>{{formatDate this.publishDate}}</td>
+                    <td>{{formatVND this.price}}</td>
                     <td>{{this.author.name}}</td>
                     <td>{{this.quantity}}</td>
                     <td>
                         <a class="btn btn-link fs-5" href="/book/edit/{{this._id}}" style="">Sửa</a>
-                        <a class="btn btn-link fs-5" href="/book/edit/{{this._id}}" style="">Xóa</a>
+                        <a class="btn btn-link fs-5" onclick="confirmDelete('{{this._id}}','{{this.name}}')"
+                            style="">Xóa</a>
                     </td>
 
                 </tr>
@@ -35,4 +38,17 @@
             </tbody>
         </table>
     </div>
+    <form action="" method="get" id="delete-form"></form>
 </div>
+<script>
+    const confirmDelete = (id, name) => {
+        const confirmValue = confirm(`Bạn có chắc chắn muốn xóa thông tin cuốn sách "${name}"`);
+        if (confirmValue) {
+            console.log(id);
+            let url = location.protocol + '//' + location.host + '/book/delete/' + id;
+            const form = document.getElementById('delete-form');
+            form.action = url;
+            form.submit();
+        }
+    }
+</script>

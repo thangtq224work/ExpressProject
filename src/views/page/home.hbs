@@ -1,0 +1,20 @@
+<div class="mx-4 my-4">
+    <h2 class="text-center">Danh sách cuốn sách</h2>
+    <div class="row mt-4">
+        {{#each books}}
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="home_page_title_name card-text"><i class="bi bi-info-circle-fill"></i> {{this.name}}</p>
+                    <p class="home_page_title_author card-text"><i class="bi bi-person-circle"></i> {{this.author.name}}</p>
+                    <div>
+                        <i class="bi bi-cash"></i><span class="home_page_title_price card-text"></i>{{formatVND this.price}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{/each}}
+    </div>
+</div>

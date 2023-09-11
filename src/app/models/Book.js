@@ -1,6 +1,7 @@
-// const mongoose = require('mongoose');
 const mongoose = require('mongoose');
+const slugGenerator = require('mongoose-slug-updater');
 // create an schema
+mongoose.plugin(slugGenerator);
 const bookSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,6 +9,10 @@ const bookSchema = new mongoose.Schema({
         maxLength: 255
     },
     quantity: {
+        type: Number,
+        required: true
+    },
+    price: {
         type: Number,
         required: true
     },
@@ -28,7 +33,8 @@ const bookSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Author"
-    }
+    },
+    slug: { type: String, slug: ["name"], unique:true }
 
 }, { timestamps: true });
 

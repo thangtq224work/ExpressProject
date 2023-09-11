@@ -1,0 +1,15 @@
+.bi{
+    padding-right: 1rem;
+}
+.home_page_title_name{
+    font-size: 1.4rem;
+}
+
+.home_page_title_author{
+    font-size: 1.4rem;
+}
+.home_page_title_price{
+    font-size: 1rem;
+    font-weight: bold;
+    color: blue;
+}

@@ -17,6 +17,13 @@
             </div>
         </div>
         <div class="mb-3">
+            <label for="priceBook" class="form-label">Giá bán</label>
+            <input name="price" type="number" class="form-control" id="priceBook" required>
+            <div class="invalid-feedback">
+                Vui lòng nhập giá bán
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="publishDateBook" class="form-label">Ngày phát hành</label>
             <input name="publishDate" type="date" class="form-control" id="publishDateBook"
                 value="{{formatDate book.publishDate}}" required>

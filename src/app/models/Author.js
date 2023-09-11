@@ -19,6 +19,11 @@ const authorSchema = new mongoose.Schema({
     gender: {
         type:Boolean,
     },
+    
+    available: {
+        type:Boolean,
+        default:true
+    },
     book:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Book"

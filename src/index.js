@@ -9,6 +9,7 @@ const dotenv = require('dotenv')
 const app = express();
 const port = process.env.PORT | 5005;
 const formatDate = require('./app/utils/formatDate');
+const formatVND = require('./app/utils/formatVND') 
 
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.engine('hbs', hbs.engine({
         formatDate: (a) => { return formatDate.formatDate(a) },
         sum: (a, b) => { return a + b },
         compare: (a, b) => { return a == b },
+        formatVND: (a) => { return formatVND.formatVND(a) },
     }
 })
 );
