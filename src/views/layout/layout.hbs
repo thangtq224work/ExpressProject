@@ -10,10 +10,12 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="app">
         {{> header}}
-        {{{body}}}
-        {{> footer}}
+        <div class="container">
+            {{{body}}}
+        </div>
+        {{!-- {{> footer}} --}}
     </div>
 
 

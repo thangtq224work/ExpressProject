@@ -1,0 +1,79 @@
+<div class="mx-4 my-4">
+    <h2 class="text-center">Cập nhật sách</h2>
+    <form method="post" class="needs-validation" action="/book/update/{{book._id}}" novalidate>
+        <div class="mb-3">
+            <label for="nameBook" class="form-label">Tên sách</label>
+            <input name="name" type="text" class="form-control" id="nameBook" value="{{book.name}}" required>
+            <div class="invalid-feedback">
+                Vui lòng nhập tên sách
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="quantityBook" class="form-label">Số lượng</label>
+            <input name="quantity" type="number" class="form-control" id="quantityBook" value="{{book.quantity}}"
+                required>
+            <div class="invalid-feedback">
+                Vui lòng nhập số lượng
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="publishDateBook" class="form-label">Ngày phát hành</label>
+            <input name="publishDate" type="date" class="form-control" id="publishDateBook"
+                value="{{formatDate book.publishDate}}" required>
+            <div class="invalid-feedback">
+                Vui lòng chọn ngày phát hành
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="publishDateBook" class="form-label">Thể loại</label>
+            <select class="form-select mb-3" name="type" required>
+                <option value="">Thể loại</option>
+                {{#each typeBook}}
+                <option value="{{this.key}}" {{#if (compare ../book.type this.key) }}selected{{/if}}>{{this.value}}</option>
+                {{/each}}
+            </select>
+
+            <div class="invalid-feedback">
+                Vui lòng chọn thể loại
+            </div>
+        </div>
+        <label for="exampleInputPassword1" class="form-label">Tác giả</label>
+        <select class="form-select mb-3" name="author" required>
+            <option value="">Chọn tác giả</option>
+            {{#each authors}}
+            <option value="{{this._id}}" {{#if (compare ../book.author this._id) }}selected{{/if}}>
+                {{this.name}}
+            </option>
+            {{/each}}
+            {{!-- <option value="" selected>Giới tính</option>
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option> --}}
+        </select>
+        <div class="invalid-feedback">
+            Vui lòng chọn tác giả
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+</div>
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

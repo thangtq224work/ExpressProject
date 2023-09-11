@@ -1,0 +1,39 @@
+<div class="mx-4 my-4">
+    <h2 class="text-center">Danh sách tác giả</h2>
+    <a class="btn btn-primary mt-4 me-auto" href="/author/new" role="button" aria-disabled="true">Tạo mới</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên tác giả</th>
+                    <th scope="col">Quê quán</th>
+                    <th scope="col">Ngày sinh</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {{#each authors}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.homeTown}}</td>
+                    <td>{{formatDate this.birthday}}</td>
+                    <td>{{ternary this.gender "Nam" "Nữ"}}</td>
+                    <td>
+                        <a class="btn btn-link fs-5" href="/author/edit/{{this._id}}" style="" >Sửa</a>
+                        <a class="btn btn-link fs-5" href="/author/edit/{{this._id}}" style="" >Xóa</a>
+                    </td>
+
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="6">Chưa </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

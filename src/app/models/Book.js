@@ -13,17 +13,23 @@ const bookSchema = new mongoose.Schema({
     },
     available: {
         type: Boolean,
-        required: true
+        required: true,
+        default: true
     },
     type: {
-        type:[String] ,// array string
-        required:true
+        // type: [String],// array string
+        type: String,
+        required: true
     },
-    author:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Author"
+    publishDate: {
+        type: Date,
+        required: true
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Author"
     }
 
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("Book", bookSchema); 

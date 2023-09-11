@@ -7,12 +7,13 @@ const authorSchema = new mongoose.Schema({
         required: true,
         maxLength: 255
     },
-    year: {
-        type: Number,
-        required: true
+    homeTown: {
+        type: String,
+        required: true,
+        maxLength: 255
     },
-    available: {
-        type: Boolean,
+    birthday: {
+        type: Date,
         required: true
     },
     gender: {
@@ -23,6 +24,6 @@ const authorSchema = new mongoose.Schema({
         ref:"Book"
     }
 
-});
+},{ timestamps: true });
 
 module.exports = mongoose.model("Author", authorSchema); 

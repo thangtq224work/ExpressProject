@@ -1,0 +1,58 @@
+<div class="mx-4 my-4">
+    <h2 class="text-center">Cập nhật tác giả</h2>
+    <form method="post" class="needs-validation" action="/author/update/{{author._id}}" novalidate>
+        <div class="mb-3">
+            <label for="nameAuthor" class="form-label">Tên tác giả</label>
+            <input name="name" type="text" class="form-control" id="nameAuthor" value="{{author.name}}" required>
+            <div class="invalid-feedback">
+                Vui lòng nhập tên tác giả
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="homeTownAuthor" class="form-label">Quê quán</label>
+            <input name="homeTown" type="text" class="form-control" id="homeTownAuthor" value="{{author.homeTown}}" required>
+            <div class="invalid-feedback">
+                Vui lòng nhập quê quán
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="birthdayAuthor" class="form-label">Ngày sinh</label>
+            <input name="birthday" type="date" class="form-control" id="birthdayAuthor" value="{{formatDate author.birthday}}" required>
+            <div class="invalid-feedback">
+                Vui lòng chọn ngày sinh
+            </div>
+        </div>
+        <label for="exampleInputPassword1" class="form-label">Giới tính</label>
+        <select class="form-select mb-3" name="gender" required>
+            <option value="" selected>Giới tính</option>
+            <option value="true" {{#if author.gender}}selected{{/if}}>Nam</option>
+            <option value="false" {{#unless author.gender}}selected{{/unless}}>Nữ</option>
+        </select>
+        <div class="invalid-feedback">
+            Vui lòng chọn giới tính
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

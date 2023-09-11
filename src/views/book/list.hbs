@@ -1,0 +1,38 @@
+<div class="mx-4 my-4">
+    <h2 class="text-center">Danh sách cuốn sách</h2>
+    <a class="btn btn-primary mt-4 me-auto" href="/book/new" role="button" aria-disabled="true">Tạo mới</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Ngày phát hành</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {{#each books}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{formatDate this.publishDate}}</td>
+                    <td>{{this.author.name}}</td>
+                    <td>{{this.quantity}}</td>
+                    <td>
+                        <a class="btn btn-link fs-5" href="/book/edit/{{this._id}}" style="">Sửa</a>
+                        <a class="btn btn-link fs-5" href="/book/edit/{{this._id}}" style="">Xóa</a>
+                    </td>
+
+                </tr>
+                {{else}}
+                <tr class="text-center">
+                    <td colspan="6">Chưa có cuốn sách nào!</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
