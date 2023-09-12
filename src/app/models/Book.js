@@ -26,6 +26,10 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: {
+        type: [String],// array string
+        required: true
+    },
     publishDate: {
         type: Date,
         required: true

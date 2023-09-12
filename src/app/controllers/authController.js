@@ -9,6 +9,9 @@ const authController = {
             next(err)
         })
     },
-    
+    loginPage: async (req, resp, next) => {
+        resp.render('page/login');
+    },
+
 }
 module.exports = authController;

@@ -1,35 +1,35 @@
-// // const mongoose = require('mongoose');
-// const mongoose = require('mongoose');
-// // create an schema
-// const bookSchema = new mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true,
-//         maxLength: 255
-//     },
-//     quantity: {
-//         type: Number,
-//         required: true
-//     },
-//     available: {
-//         type: Boolean,
-//         required: true,
-//         default: true
-//     },
-//     type: {
-//         // type: [String],// array string
-//         type: String,
-//         required: true
-//     },
-//     publishDate: {
-//         type: Date,
-//         required: true
-//     },
-//     author: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Author"
-//     }
+const mongoose = require('mongoose');
+// create an schema
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        maxLength: 50,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    fullname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    available: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    birthday: {
+        type: Date,
+        required: true
+    }
 
-// }, { timestamps: true });
+}, { timestamps: true });
 
-// module.exports = mongoose.model("Book", bookSchema); 
+module.exports = mongoose.model("User", userSchema); 

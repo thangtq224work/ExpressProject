@@ -1,15 +1,54 @@
-.bi{
+.bi {
     padding-right: 1rem;
 }
-.home_page_title_name{
+
+.home_page_title_name {
     font-size: 1.4rem;
 }
 
-.home_page_title_author{
+.home_page_title_author {
     font-size: 1.4rem;
 }
-.home_page_title_price{
+
+.home_page_title_price {
     font-size: 1rem;
     font-weight: bold;
     color: blue;
+}
+
+.login_page_title {
+    padding: 0 2rem;
+}
+
+.login_page_text {
+    padding: 0 2rem;
+}
+
+/* .login_page_images_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgb(215, 215, 240, 0.6);
+    padding: 0;
+}
+
+.login_page_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.login_page_form {
+    width: 80%;
+    padding-top: 30px;
+} */
+.login_page_form_container{
+    background-color: rgb(119, 115, 109,0.3);
+}
+.login_page_form_container .form-label{
+    border-radius: 20px;
+    font-size: large;
+    font-weight: bold;
 }
