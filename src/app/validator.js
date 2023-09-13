@@ -8,4 +8,8 @@ const registerValidator = [
     body("birthday", "Vui lòng nhập ngày sinh").isISO8601("yyyy-MM-dd"),
 
 ];
-module.exports = { registerValidator }
+const loginValidator = [
+    body("username", "Username hoặc mật khẩu không hợp lệ").trim().isLength({ min: 1, max: 20 }),
+    body("password", "Username hoặc mật khẩu không hợp lệ").trim().isLength({ min: 1, max: 20 }),
+];
+module.exports = { registerValidator, loginValidator }

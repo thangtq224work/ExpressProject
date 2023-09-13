@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const UserRole = require('../../const/UserRole');
 // create an schema
 const userSchema = new mongoose.Schema({
     username: {
@@ -28,6 +29,11 @@ const userSchema = new mongoose.Schema({
     birthday: {
         type: Date,
         required: true
+    },
+    role: {
+        type: String,
+        required: true,
+        default: UserRole.USER
     }
 
 }, { timestamps: true });
