@@ -29,13 +29,17 @@ const authController = {
         if (!compare) {
             return resp.status(401).json({ message: "Username hoặc mật khẩu không hợp lệ" });
         }
-        const access_token = jsonwebtoken.sign({ user: data.username, role: data.role }, process.env.SECRET_KEY, { expiresIn: "1m" });
+        const access_token = jsonwebtoken.sign({ user: data.username, role: data.role }, process.env.JWT_ACCESS_KEY, { expiresIn: "1m" });
         return resp.json({ access_token: access_token });
     },
 
     verify: async (req, resp, next) => {
-        const access_token = req.headers.authorization.substr("Bearer ".length);
-        jsonwebtoken.verify(access_token, process.env.SECRET_KEY, (err, payload) => {
+        const authorization = req.headers.authorization;
+        if (!authorization) {
+            return resp.status(401).json({ message: "Xác thực thất bại" });
+        }
+        const access_token = authorization.substr("Bearer ".length);
+        jsonwebtoken.verify(access_token, process.env.JWT_ACCESS_KEY, (err, payload) => {
             if (err) {
                 return resp.status(403).json({ message: "Xác thực thất bại" });
             }

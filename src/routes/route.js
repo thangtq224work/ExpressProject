@@ -11,8 +11,8 @@ const apiBookRoute = require('./apiRoute/bookRoute');
 
 const route = express.Router();
 route.use('/api/v1', apiAuthRoute);
-route.use('/api/book', apiAuthorRoute);
-route.use('/api/author', apiBookRoute);
+route.use('/api/author', apiAuthorRoute);
+route.use('/api/book', apiBookRoute);
 route.use(SiteRoute);
 route.use('/book', BookRoute);
 route.use('/v1', authRoute);

@@ -1,6 +1,5 @@
-const Book = require('../models/Book');
-const Author = require('../models/Author');
-const castOb = require('../utils/castObject');
+const Book = require('../../models/Book');
+const castOb = require('../../utils/castObject');
 
 let fakeData = [
     {
@@ -65,5 +64,13 @@ const bookController = {
             return resp.status(400).json({ message: "Error" });
         });
     },
+    upload: (req, resp, next) => {
+        const file = req.file;
+        console.log(file);
+        if (!file) {
+            return next({ message: "Please upload file",code: 400 });
+        }
+        resp.json({ file: "OKE" })
+    }
 }
 module.exports = bookController;

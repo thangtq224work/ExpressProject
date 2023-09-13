@@ -1,7 +1,7 @@
 
-const Author = require('../models/Author');
-const Book = require('../models/Book');
-const castObject = require('../utils/castObject')
+const Author = require('../../models/Author');
+const Book = require('../../models/Book');
+const castObject = require('../../utils/castObject')
 const authorController = {
     getAuthors: async (req, resp, next) => {
         await Author.find({ available: true }).sort({ name: 1 }).then((authorData) => {

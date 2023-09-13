@@ -1,5 +1,5 @@
 const route = require('express').Router();
-const authorController = require('../../app/controllers/api/bookController');
+const authorController = require('../../app/controllers/api/authorController');
 const apiAuthController = require('../../app/controllers/api/authController');
 route.get('/', apiAuthController.verify, authorController.getAuthors);
 route.get('/delete/:id', apiAuthController.verify, authorController.deleteAuthor);
